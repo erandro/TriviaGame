@@ -1,0 +1,29 @@
+body {
+    background-color: rgb(132, 228, 123);
+    //background-image: url(https://wallpapershome.com/images/wallpapers/polygon-2560x1600-4k-hd-wallpaper-orange-red-blue-background-pattern-225.jpg);
+    /* font-family: Manuale; */
+    color: rgb(0, 0, 0);
+}
+.centerButton {
+    display: flex;
+    justify-content: center;
+}
+#timer{
+    color: rgb(255, 0, 0);
+}
+.row{
+    background: rgba(255, 255, 255, 0.3);
+}
+#lineOne, #lineTwo, #line00, #line01, #line02, #line03, #line04 {
+    display: flex;
+    justify-content: center;
+}
+#line00, #line01, #line02, #line03, #line04 {
+    padding: 20px 0;
+}
+#line00 {
+    font-weight: bold;
+}
+#line01:hover, #line02:hover, #line03:hover, #line04:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
