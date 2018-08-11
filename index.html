@@ -26,10 +26,10 @@
 
     <!-- subTitle -->
     <div>
-        <h4 id="lineTwo">You got 20 seconds for each question</h4>
+        <h5 id="lineTwo">You got 20 seconds for each question. Press START to begin</h5>
         <div class="centerButton">
-            <button type="button" class="btn btn-success">START</button>
-            <p id="timer"></p>
+            <button type="button" class="btn btn-success" id="btn_start">START</button>
+            <p id="clock"></p>
         </div>
     </div>
     <br>
@@ -43,7 +43,7 @@
                     <div class="col-sm-2">
                     </div>
                     <div class="col-sm-8" id="line00">
-                        line00
+
                     </div>
                     <div class="col-sm-2">
                     </div>
@@ -52,8 +52,8 @@
                 <div class="row">
                     <div class="col-sm-2">
                     </div>
-                    <div class="col-sm-8" id="line01">
-                        line01
+                    <div class="col-sm-8 answers">
+                        <button type="button" class="btn btn-light invisible" id="line01">A01</button>
                     </div>
                     <div class="col-sm-2">
                     </div>
@@ -62,8 +62,8 @@
                 <div class="row">
                     <div class="col-sm-2">
                     </div>
-                    <div class="col-sm-8" id="line02">
-                        line02
+                    <div class="col-sm-8 answers">
+                        <button type="button" class="btn btn-light invisible" id="line02">A02</button>
                     </div>
                     <div class="col-sm-2">
                     </div>
@@ -72,8 +72,8 @@
                 <div class="row">
                     <div class="col-sm-2">
                     </div>
-                    <div class="col-sm-8" id="line03">
-                        line03
+                    <div class="col-sm-8 answers">
+                        <button type="button" class="btn btn-light invisible" id="line03">A03</button>
                     </div>
                     <div class="col-sm-2">
                     </div>
@@ -82,8 +82,8 @@
                 <div class="row">
                     <div class="col-sm-2">
                     </div>
-                    <div class="col-sm-8" id="line04">
-                        line04
+                    <div class="col-sm-8 answers">
+                        <button type="button" class="btn btn-light invisible" id="line04">A04</button>
                     </div>
                     <div class="col-sm-2">
                     </div>
@@ -94,7 +94,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- JQuery -->
         <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
