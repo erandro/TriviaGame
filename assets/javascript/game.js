@@ -9,7 +9,7 @@ var allQuestions = {
             "Theodore Roosevelt",
         ],
         correct: 1
-    }/*,
+    },
     Q2: {
         q: "What is the name of the boxer whose life story is depicted in the 1999 movie 'The Hurricane'?",
         a: [
@@ -99,10 +99,9 @@ var allQuestions = {
             "Greece",
         ],
         correct: 2
-    } */
+    }
 };
-var questionsNumber = Object.keys(allQuestions)
-questionsNumber.map(String);
+var questionsKeys = Object.keys(allQuestions)
 
 var Qcount = 0;
 var score = 0;
@@ -130,15 +129,15 @@ function changeButtonToRestart(btn) {
 
 // start game
 $(btnStart).on("click", function () {
+    score = 0;
     $(L2).text("");
     showButton(A1);
     showButton(A2);
     showButton(A3);
     showButton(A4);
     hideButton(btnStart);
-    question20Sgenerator()
+    questionGenerator()
 });
-
 // bring new questions
 function newQuestion(Qnumber) {
     $("#line00").text(allQuestions[Qnumber].q);
@@ -149,22 +148,28 @@ function newQuestion(Qnumber) {
     Qcount = Qcount + 1;
     correctAnswer = allQuestions[Qnumber].correct;
 }
-
+// end game events
+function endGameEvents() {
+    showButton(btnStart);
+    changeButtonToRestart(btnStart);
+    $(A0).text("");
+    hideButton(A1);
+    hideButton(A2);
+    hideButton(A3);
+    hideButton(A4);
+    $(L2).text("You got " + score + "/" + questionsKeys.length);
+    Qcount = 0;
+}
 // questions generator
-function question20Sgenerator() {
-    yesClickonAnswer();
-    if (questionsNumber.length === Qcount) {
-        // end game events: 
-        $(L2).text("You got " + score + "/" + questionsNumber.length);
-        showButton(btnStart);
-        changeButtonToRestart(btnStart);
-        $(A0).text("");
-        hideButton(A1);
-        hideButton(A2);
-        hideButton(A3);
-        hideButton(A4);
+function questionGenerator() {
+    canClickOnAnswerBtn();
+    areAllQuestionsPlayed()
+}
+function areAllQuestionsPlayed() {
+    if (questionsKeys.length === Qcount) {
+        endGameEvents()
     } else {
-        newQuestion(questionsNumber[Qcount]);
+        newQuestion(questionsKeys[Qcount]);
         clock();
     }
 }
@@ -182,17 +187,17 @@ function clockRun() {
         haveBeenClicked = false;
         stopClock();
         setTimeout(function () {
-            question20Sgenerator();
+            questionGenerator();
         }, 5000);
 
     } else if (seconds === 0) {
         stopClock();
-        noClickonAnswer();
+        cantClickOnAnswerBtn();
         var Right = "#line0" + correctAnswer;
         colorRightA(Right);
         $(L2).text("Time's up");
         setTimeout(function () {
-            question20Sgenerator();
+            questionGenerator();
         }, 5000);
 
     } else {
@@ -205,13 +210,13 @@ function stopClock() {
 }
 
 // btn un/click
-function noClickonAnswer() {
+function cantClickOnAnswerBtn() {
     $(A1).prop('disabled', true);
     $(A2).prop('disabled', true);
     $(A3).prop('disabled', true);
     $(A4).prop('disabled', true);
 }
-function yesClickonAnswer() {
+function canClickOnAnswerBtn() {
     $(A1).prop('disabled', false);
     $(A2).prop('disabled', false);
     $(A3).prop('disabled', false);
@@ -240,16 +245,20 @@ function colorWrongA(answerNunber) {
 
 // next question text
 function readyNextQ() {
-    if (questionsNumber.length != Qcount) {
+    if (questionsKeys.length != Qcount) {
         $(L2).text("Get ready for the next question");
+        $(A0).text("Get ready for the next question");
+        $(A1).text("Get ready for the next question");
+        $(A2).text("Get ready for the next question");
+        $(A3).text("Get ready for the next question");
+        $(A4).text("Get ready for the next question");
     }
 }
-
 
 // checking answer 1
 $(A1).on("click", function () {
     haveBeenClicked = true;
-    noClickonAnswer();
+    cantClickOnAnswerBtn();
     if (correctAnswer === 1) {
         colorRightA(A1);
         score = score + 1;
@@ -262,7 +271,7 @@ $(A1).on("click", function () {
 // checking answer 2
 $(A2).on("click", function () {
     haveBeenClicked = true;
-    noClickonAnswer();
+    cantClickOnAnswerBtn();
     if (correctAnswer === 2) {
         colorRightA(A2);
         score = score + 1;
@@ -275,7 +284,7 @@ $(A2).on("click", function () {
 // checking answer 3
 $(A3).on("click", function () {
     haveBeenClicked = true;
-    noClickonAnswer();
+    cantClickOnAnswerBtn();
     if (correctAnswer === 3) {
         colorRightA(A3);
         score = score + 1;
@@ -288,7 +297,7 @@ $(A3).on("click", function () {
 // checking answer 4
 $(A4).on("click", function () {
     haveBeenClicked = true;
-    noClickonAnswer();
+    cantClickOnAnswerBtn();
     if (correctAnswer === 4) {
         colorRightA(A4);
         score = score + 1;
