@@ -1,3 +1,4 @@
+// Questions
 var allQuestions = {
     Q1: {
         q: "Which US President is most to the left on the Mount Rushmore National Memorial?",
